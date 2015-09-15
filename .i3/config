@@ -32,7 +32,7 @@ set $ws9  "9:"
 set $ws10 "10:"
 
 set $default_gaps_inner 15
-set $default_gaps_outer 30
+set $default_gaps_outer 20
 gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
 
@@ -57,26 +57,26 @@ client.focused_inactive $darkcyan  $darkcyan  $white $darkcyan
 client.urgent           $red       $red       $white $red
 
 floating_modifier $mod
-bindsym $mod+Return exec --no-startup-id urxvt
-bindsym $mod+Shift+Return exec --no-startup-id urxvt -name __scratchpad
+bindsym $mod+Return exec --no-startup-id urxvtc
+bindsym $mod+Shift+Return exec --no-startup-id urxvtc -name __scratchpad
 
 bindsym $mod+q kill
 
 bindsym $mod+d exec dmenu_run -i -y 18 -o 0.8 -l 100 -w 300 -p "\$" -nb "$background" -nf "$white" -sb "$background" -sf "$cyan"
 bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -y 18 -o 0.8 -l 100 -w 300 -p "\$" -nb "$background" -nf "$white" -sb "$background" -sf "$cyan"'
 
-bindsym $mod+Left focus left
-bindsym $mod+Right focus right
-bindsym $mod+Up focus up
-bindsym $mod+Down focus down
+bindsym $mod+h focus left
+bindsym $mod+l focus right
+bindsym $mod+k focus up
+bindsym $mod+j focus down
 
-bindsym $mod+Shift+Left move left 35px
-bindsym $mod+Shift+Down move down 35px
-bindsym $mod+Shift+Up move up 35px
-bindsym $mod+Shift+Right move right 35px
+bindsym $mod+Shift+h move left 35px
+bindsym $mod+Shift+j move down 35px
+bindsym $mod+Shift+k move up 35px
+bindsym $mod+Shift+l move right 35px
 
-bindsym $mod+h split h
-bindsym $mod+v split v
+bindsym $mod+bar split h
+bindsym $mod+minus split v
 
 bindsym $mod+f fullscreen
 bindsym $mod+g fullscreen global
@@ -121,9 +121,14 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/scripts/volume_control.py down 5
-bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/scripts/volume_control.py up 5
-bindsym XF86AudioMute exec --no-startup-id $HOME/scripts/volume_control.py toggle
+#bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/scripts/volume_control.py down 5
+#bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/scripts/volume_control.py up 5
+#bindsym XF86AudioMute exec --no-startup-id $HOME/scripts/volume_control.py toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up
+bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down
+bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +5
 bindsym $mod+Shift+v exec dmenu -noinput -i -y 20 -o 0.8 -w 300 -p "%" -nb "$background" -nf "$white" -sb "$background" -sf "$cyan" | xargs $HOME/scripts/volume_control.py set
 
 bindsym $mod+Shift+c reload
@@ -266,7 +271,7 @@ bar {
     separator_symbol "]━["
     bindsym button4 nop
     bindsym button5 nop
-    tray_output LVDS-0
+    tray_output eDP1
     tray_padding 0
     colors {
         statusline         $white
@@ -286,6 +291,5 @@ bar {
 
 exec --no-startup-id compton -b
 exec --no-startup-id dunst &
-exec --no-startup-id nm-applet &
 
 exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpapers/current
