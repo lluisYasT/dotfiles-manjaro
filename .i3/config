@@ -121,12 +121,12 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-#bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/scripts/volume_control.py down 5
-#bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/scripts/volume_control.py up 5
-#bindsym XF86AudioMute exec --no-startup-id $HOME/scripts/volume_control.py toggle
-bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up
-bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down
-bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute
+bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/scripts/volume_control.py down 5
+bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/scripts/volume_control.py up 5
+bindsym XF86AudioMute exec --no-startup-id $HOME/scripts/volume_control.py toggle
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up
+#bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down
+#bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +5
 bindsym $mod+Shift+v exec dmenu -noinput -i -y 20 -o 0.8 -w 300 -p "%" -nb "$background" -nf "$white" -sb "$background" -sf "$cyan" | xargs $HOME/scripts/volume_control.py set
