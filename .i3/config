@@ -31,8 +31,8 @@ set $ws8  "8:"
 set $ws9  "9:"
 set $ws10 "10:"
 
-set $default_gaps_inner 15
-set $default_gaps_outer 20
+set $default_gaps_inner 5
+set $default_gaps_outer 10
 gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
 
