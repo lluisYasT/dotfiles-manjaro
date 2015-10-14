@@ -13,7 +13,7 @@ def set_volume(percentage):
   emit_signal()
 
 def toggle_volume():
-  executor.run('amixer set Master Playback Switch toggle')
+  executor.run('pulseaudio-ctl mute')
   emit_signal()
 
 def is_muted():
